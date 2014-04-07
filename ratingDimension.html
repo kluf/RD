@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>rating dimension</title>
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+</head>
+<body>
+    <div class="inputParams">
+        <form class="submitNames">
+            <div class="half">
+                <label for="startValues">English values</label><textarea class="startValues" name="startValues" cols="75" rows="20">aaaa
+bbbb
+ffff
+gggg</textarea>
+    </div>
+        <div class="half">
+                <label for="startProps">Other foreign language</label><textarea class="startProps" name="startProps" cols="75" rows="20">
+1111
+5555
+3333
+6666</textarea>
+            </div>
+            <input type="submit" id="getNames" value="go">
+        </form>
+    </div>
+    <div class="outputParams">
+        <div class="half">
+            <label for="startValues">New beans</label><textarea cols="50" rows="20" class="beans" name="beans">
+            </textarea>
+        </div>
+        <div class="half">
+            <label for="startValues">New values</label><textarea cols="50" rows="20" class="values" name="values">
+            </textarea>
+        </div>
+        <div class="half">
+            <label for="startValues">New properties</label><textarea cols="50" rows="20" class="properties" name="properties">
+            </textarea>
+        </div>
+    </div>
+    <div class="inputExistingParams">
+        <div class="half">
+            <label for="existedbeans">Existing beans</label><textarea cols="50" rows="20" class="existedbeans" name="existedbeans">
+<bean p:externalID="ANiceShaveWorthTheMoney" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="EffectiveAndRecharging" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="EffectiveEvenOnVeryShortHairs" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="GentleAndforHairs" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="GentleOnTheSkin" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="GivesACloseShave" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="PerfectTrim" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="PowerAndcheckAccuracy" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="ReliableAndSome" class="com.bazaarvoice.prr.config.RatingDimension"/>
+<bean p:externalID="SmoothExfoliation" class="com.bazaarvoice.prr.config.RatingDimension"/></textarea>
+        </div>
+        <div class="half">
+            <label for="existedvalues">Existing values</label><textarea cols="50" rows="20" class="existedvalues" name="existedvalues">
+<value>Smooth exfoliation</value>
+<value>Effective even on very short hairs</value>
+<value>Gives a close shave</value>
+<value>Gentle on - the skin</value>
+<value>A Nice Shave-Worth the Money</value>
+<value>Gentle&for -hairs</value>
+<value>Perfect- trim</value>
+<value>Power &check accuracy</value>
+<value>Effective& re-charging</value>
+<value>Reliable & some</value></textarea>
+        </div>
+        <div class="half">
+            <label for="existedproperties">Existing properties</label><textarea cols="50" rows="20" class="existedproperties" name="existedproperties">
+aaaa/dimensionLabel1/=1111
+bbbb/dimensionLabel1/=5555
+cccc1/dimensionLabel1/=3333
+dddd1/dimensionLabel1/=6666</textarea>
+        </div>
+    </div>
+    <div class="for-errors"></div>
+    <div class="modal">
+        <div class="innerModal">
+            <div class="warnHeader">
+                <span>X</span>
+            </div>
+            <div class="forWarning"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="ratingDimension.js"></script>
+</body>
+</html>

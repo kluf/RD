@@ -1,0 +1,73 @@
+input, textarea {
+    font: 13px Verdana,sans-serif;
+}
+.forErrors {
+    margin-top: 20px;
+}
+.submitNames .half{
+    display: inline;
+    width: 45%;
+    float: left;
+    padding: 10px;
+}
+.half{
+    display: inline;
+    width: 30%;
+    float: left;
+    padding: 10px;
+}
+label{
+    display: block;
+}
+textarea{
+    width: 100%;
+}
+.outputParams{
+    background: rgb(70%,70%,70%);
+    height: 400px;
+}
+.inputParams{
+    background: rgb(70%,90%,70%);
+    height: 410px;
+}
+.inputExistingParams{
+    background: rgb(70%,70%,90%);
+    height: 410px;
+}
+.warning {
+    background: #e54;
+    color: #fff;
+    font: 1em/2 Verdana, sans-serif;
+}
+.modal{
+    display: none;
+    width: 100%;
+    background: url(bg.png) repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.modal .innerModal{
+    width: 60%;
+    background: #fff;
+    z-index: 5;
+    margin: 0 auto;
+}
+.display {
+    display: block;
+}
+.hide {
+    display: none;
+}
+.warnHeader {
+    width: 100%;
+    height: 2em;
+    color: #fff;
+}
+.warnHeader span{
+    font: bold 18px Arial, Verdana, sans-serif;
+    color: #000;
+    float: right;
+    cursor: pointer;
+    padding: 8px 10px 0 0;
+}
