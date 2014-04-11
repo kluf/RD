@@ -126,7 +126,7 @@
             node = document.createElement('p');
             node.className = "warning";
             node.innerHTML = prop + message + val;
-            fragm.appendChild(node);
+            fragm = fragm.appendChild(node);
             return {"fragments" : fragm, "node" : true};
         }
 
@@ -138,46 +138,65 @@
                 lenProps = props.length,
                 lengthOfArr,
                 tempIndex,
-                counter = 1,
-                fragment;
-                
+                counter,
+                fragment = '',
+                existedObjectKeyWithoutNumber,
+                lengthOfArr,
+                existedObjectKeyContainsNumber,
+                newObjectKeyWithoudNumber,
+                existedObjectValue,
+                newObjectValue;
+
                 for (tempVal in PO) {
+
                     for (i = 0; i < lenProps; i++) {
-                        // console.log(p[i]);
-                        var existedObjectKeyWithoutNumber = tempVal.toLowerCase().match(MO.regPropertyFirstPart),
+
+                            existedObjectKeyWithoutNumber = tempVal.toLowerCase().match(MO.regPropertyFirstPart),
                             lengthOfArr = existedObjectKeyWithoutNumber.length-1,
                             existedObjectKeyContainsNumber = existedObjectKeyWithoutNumber[lengthOfArr],
                             newObjectKeyWithoudNumber = props[i].toLowerCase().match(MO.regPropertyFirstPart),
                             existedObjectValue = PO[tempVal],
                             newObjectValue = convertCharStr2jEsc(vals[i]);
 
-                        if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
-                            existedObjectValue !== newObjectValue) {
-                            // console.log(existedObjectValue + "=" +newObjectValue);
-                            console.log(existedObjectKeyWithoutNumber[1] + " - " + existedObjectValue + " - " + newObjectValue);
-                            if (typeof(existedObjectKeyContainsNumber) === 'number') {
-                                counter = ++existedObjectKeyContainsNumber;
-                                PO[existedObjectKeyWithoutNumber[1] + counter] = newObjectValue;
+                            if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
+                                existedObjectValue === newObjectValue) {
+                                fragment = appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - already exists with exists with the same value');
+                            } else if (existedObjectKeyWithoutNumber[1] !== newObjectKeyWithoudNumber[1] &&
+                                existedObjectValue !== newObjectValue) {
+                                if (typeof(existedObjectKeyContainsNumber) === 'number') {
+                                    counter = ++existedObjectKeyContainsNumber;
+                                    PO[newObjectKeyWithoudNumber[1] + counter] = newObjectValue;
+                                } else {
+                                    PO[newObjectKeyWithoudNumber[1]] = newObjectValue;
+                                }
+                            } else if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
+                                existedObjectValue !== newObjectValue) {
+                                PO[newObjectKeyWithoudNumber[1]] = newObjectValue;
+                            } else if (existedObjectKeyWithoutNumber[1] !== newObjectKeyWithoudNumber[1] &&
+                                existedObjectValue === newObjectValue) {
+                                PO[newObjectKeyWithoudNumber[1]] = newObjectValue;
+                                fragment = appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - there are some other key with this this value, however key has been added');
                             } else {
-                                PO[existedObjectKeyWithoutNumber[1]] = newObjectValue;
+                                fragment = appendNodeToFragment ('Thats imposible', ', but you did it!', ' - good luck :-)');
                             }
-                        } else if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
-                            existedObjectValue === newObjectValue) {
-                            // console.log("test2");
-                            fragment = appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - already exists with exists with the same value');
-                        } else if (existedObjectKeyWithoutNumber[1] !== newObjectKeyWithoudNumber[1] &&
-                            existedObjectValue != newObjectValue) {
-                            if (typeof(existedObjectKeyContainsNumber) === 'number') {
-                                counter = ++existedObjectKeyContainsNumber;
-                            }
-                            // console.log("test3");
-                            PO[tempVal] = newObjectValue;
-                        } else {
-                            // console.log("test4");
-                            fragment = appendNodeToFragment (existedObjectKeyWithoutNumber, PO[tempVal], ' - already exists with exists with the same value');
-                        }
-                    }
-                }
+                //             console.log(existedObjectValue);
+                //         if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
+                //             existedObjectValue !== newObjectValue) {
+                //             if (typeof(existedObjectKeyContainsNumber) === 'number') {
+                //                 counter = ++existedObjectKeyContainsNumber;
+                //                 PO[existedObjectKeyWithoutNumber[1] + counter] = newObjectValue;
+                //             } else {
+                //                 PO[existedObjectKeyWithoutNumber[1]] = newObjectValue;
+                //             }
+                //         } else if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
+                //             existedObjectValue === newObjectValue) {
+                //             fragment = appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - already exists with exists with the same value');
+                        // } else 
+                        // } else {
+                //             fragment = appendNodeToFragment (existedObjectKeyWithoutNumber, PO[tempVal], ' - already exists with exists with the same value');
+                //         }
+                    } //for
+                } // for in
                 if (fragment && fragment.node) {
                     MO.forWarning.appendChild(fragment.fragments);
                     MO.forErrors.style.display = "block";
