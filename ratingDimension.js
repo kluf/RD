@@ -1,4 +1,6 @@
-(function () {
+// var RD = RD || {};
+
+// (RD = function RD() {
 
         var MO = {
             buttonGetNames : document.getElementsByClassName('getNames')[0],
@@ -18,8 +20,21 @@
             regPropertyValueSecond: /[-_a-zA-Z0-9\/]*\/=([-_a-zA-Z0-9\s&u0000-uffff]+)$/,
             regPropertyFirstPart: /^([a-zA-Z]+)(\d*)/,
             regPropertyFirstPartPO: /^([a-zA-Z0-9]+)/,
+            fragments : {
+                fragmentExists : false,
+                fragment : []
+            },
+            appendToFragment : function (node) {
+                if (!this.fragments.fragmentExists) {
+                    this.fragments.fragmentExists = true;
+                    this.fragments.fragment = document.createDocumentFragment();
+                }
+                // console.log(node);
+                this.fragments.fragment.appendChild(node);
+            }
         }
         PO = MO.properties;
+        F = MO.fragments;
 
         function clearTextAreas () {
             MO.finalProps.value = "";
@@ -122,12 +137,15 @@
         }
 
         function appendNodeToFragment (prop, val, message) {
-            var fragm = document.createDocumentFragment(),
+            // var fragm = document.createDocumentFragment(),
             node = document.createElement('p');
-            node.className = "warning";
+            // node.className = "warning";
             node.innerHTML = prop + message + val;
-            fragm = fragm.appendChild(node);
-            return {"fragments" : fragm, "node" : true};
+            // fragm = fragm.appendChild(node);
+            // F.fragmentExists = true;
+            // F.items = fragm;
+            MO.appendToFragment(node);
+            // return {"fragments" : fragm, "node" : true};
         }
 
         function getExistingValues(vals, props){
@@ -160,7 +178,7 @@
 
                             if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
                                 existedObjectValue === newObjectValue) {
-                                fragment = appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - already exists with exists with the same value');
+                                appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - already exists with exists with the same value ');
                             } else if (existedObjectKeyWithoutNumber[1] !== newObjectKeyWithoudNumber[1] &&
                                 existedObjectValue !== newObjectValue) {
                                 if (typeof(existedObjectKeyContainsNumber) === 'number') {
@@ -175,9 +193,9 @@
                             } else if (existedObjectKeyWithoutNumber[1] !== newObjectKeyWithoudNumber[1] &&
                                 existedObjectValue === newObjectValue) {
                                 PO[newObjectKeyWithoudNumber[1]] = newObjectValue;
-                                fragment = appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - there are some other key with this this value, however key has been added');
+                                appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - there are some other key with this this value, however key has been added as ');
                             } else {
-                                fragment = appendNodeToFragment ('Thats imposible', ', but you did it!', ' - good luck :-)');
+                                appendNodeToFragment ('Thats imposible', ', but you did it!', ' - good luck :-)');
                             }
                 //             console.log(existedObjectValue);
                 //         if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
@@ -197,8 +215,9 @@
                 //         }
                     } //for
                 } // for in
-                if (fragment && fragment.node) {
-                    MO.forWarning.appendChild(fragment.fragments);
+                if (F.fragmentExists) {
+                    // console.log(F.fragments);
+                    MO.forWarning.appendChild(F.fragment);
                     MO.forErrors.style.display = "block";
                     MO.forErrors.style.height = window.outerHeight +"px";
                 }
@@ -291,4 +310,4 @@
         MO.forErrors.addEventListener("click", function (event){
             MO.forErrors.style.display = "none";
         })
-}());
+// }());
