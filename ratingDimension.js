@@ -193,7 +193,7 @@
                             } else if (existedObjectKeyWithoutNumber[1] !== newObjectKeyWithoudNumber[1] &&
                                 existedObjectValue === newObjectValue) {
                                 PO[newObjectKeyWithoudNumber[1]] = newObjectValue;
-                                appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - there are some other key with this this value, however key has been added as ');
+                                appendNodeToFragment (newObjectKeyWithoudNumber[1], PO[tempVal], ' - there are some other key '+existedObjectKeyWithoutNumber[1].toString()+existedObjectKeyWithoutNumber[existedObjectKeyWithoutNumber.length-1]+' with this this value, however key has been added as ');
                             } else {
                                 appendNodeToFragment ('Thats imposible', ', but you did it!', ' - good luck :-)');
                             }

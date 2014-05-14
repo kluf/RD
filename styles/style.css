@@ -51,7 +51,10 @@ textarea{
     width: 60%;
     background: #fff;
     z-index: 5;
-    margin: 0 auto;
+    margin: 10% 15%;
+    border: 1px solid #f11;
+    padding: 5px;
+    position: fixed;
 }
 .display {
     display: block;
@@ -66,7 +69,7 @@ textarea{
 }
 .warnHeader span{
     font: bold 18px Arial, Verdana, sans-serif;
-    color: #000;
+    color: #f33;
     float: right;
     cursor: pointer;
     padding: 8px 10px 0 0;
