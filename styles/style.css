@@ -4,15 +4,15 @@ input, textarea {
 .forErrors {
     margin-top: 20px;
 }
-.submitNames .half{
+/*.submitNames .half{
     display: inline;
     width: 45%;
     float: left;
     padding: 10px;
-}
+}*/
 .half{
     display: inline;
-    width: 30%;
+    width: 32%;
     float: left;
     padding: 10px;
 }
@@ -23,8 +23,9 @@ textarea{
     width: 100%;
 }
 .outputParams{
-    background: rgb(70%,70%,70%);
+    background: #E6FFA2;
     height: 400px;
+    margin-top: 40px;
 }
 .inputParams{
     background: rgb(70%,90%,70%);
@@ -73,4 +74,13 @@ textarea{
     float: right;
     cursor: pointer;
     padding: 8px 10px 0 0;
+}
+#getNames{
+    width: 100%;
+    background: #8EFFFF;
+    padding: 5px;
+    font: 14px Calibri, Verdana, sans-serif;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
 }

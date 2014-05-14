@@ -3,7 +3,7 @@
 // (RD = function RD() {
 
         var MO = {
-            buttonGetNames : document.getElementsByClassName('getNames')[0],
+            buttonGetNames : document.getElementById('getNames'),
             startProps : document.getElementsByClassName('startProps')[0],
             startValues : document.getElementsByClassName('startValues')[0],
             finalValues : document.getElementsByClassName('values')[0],
