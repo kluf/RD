@@ -4,12 +4,6 @@ input, textarea {
 .forErrors {
     margin-top: 20px;
 }
-/*.submitNames .half{
-    display: inline;
-    width: 45%;
-    float: left;
-    padding: 10px;
-}*/
 .half{
     display: inline;
     width: 32%;
@@ -25,7 +19,7 @@ textarea{
 .outputParams{
     background: #E6FFA2;
     height: 400px;
-    margin-top: 40px;
+    margin-top: 25px;
 }
 .inputParams{
     background: rgb(70%,90%,70%);
@@ -48,13 +42,15 @@ textarea{
     left: 0;
     top: 0;
 }
-.modal .innerModal{
+.innerModal{
     width: 60%;
     background: #fff;
     z-index: 5;
     margin: 10% 15%;
     border: 1px solid #f11;
     padding: 5px;
+}
+.modal {
     position: fixed;
 }
 .display {
@@ -77,10 +73,17 @@ textarea{
 }
 #getNames{
     width: 100%;
-    background: #8EFFFF;
+    background: #FFBC2F;
     padding: 5px;
     font: 14px Calibri, Verdana, sans-serif;
     border-radius: 5px;
     color: #fff;
     text-transform: uppercase;
+}
+label {
+    font: 14px Calibri, Verdana, sans-serif;
+}
+.theDepestModal {
+    height: 500px;
+    overflow-y: scroll;
 }
