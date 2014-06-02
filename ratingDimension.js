@@ -29,7 +29,6 @@ var RD = RD || {};
                     this.fragments.fragmentExists = true;
                     this.fragments.fragment = document.createDocumentFragment();
                 }
-                // console.log(node);
                 this.fragments.fragment.appendChild(node);
             }
         }
@@ -176,12 +175,13 @@ var RD = RD || {};
                                 if (typeof(existedObjectKeyContainsNumber) === 'number') {
                                     counter = ++existedObjectKeyContainsNumber;
                                     PO[props[i] + counter] = newObjectValue;
-                                } else {
-                                    PO[props[i]] = newObjectValue;
+                                // } else {
+                                //     PO[props[i] + 1] = newObjectValue;
                                 }
                             } else if (existedObjectKeyWithoutNumber[1] === newObjectKeyWithoudNumber[1] &&
                                 existedObjectValue !== newObjectValue) {
-                                PO[props[i]] = newObjectValue;
+                                PO[props[i] + 1] = newObjectValue;
+                                appendNodeToFragment (existedObjectKeyWithoutNumber[1], PO[tempVal], ' - already exists with exists with the same value, although has been added as' + (newObjectKeyWithoudNumber[1] + 1).toString());
                             } else if (existedObjectKeyWithoutNumber[1] !== newObjectKeyWithoudNumber[1] &&
                                 existedObjectValue === newObjectValue) {
                                 PO[props[i]] = newObjectValue;
@@ -282,5 +282,5 @@ var RD = RD || {};
         });
         MO.forErrors.addEventListener("click", function (event){
             MO.forErrors.style.display = "none";
-        })
+        });
 }());
